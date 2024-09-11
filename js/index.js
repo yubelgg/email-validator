@@ -1,11 +1,19 @@
-const http = require("http");
-const https = require("https");
-const fs = require("fs");
-const querystring = require("querystring");
+import dotenv from "dotenv";
+import http from "http";
+import https from "https";
+import fs from "fs";
+import querystring from "querystring";
+// const http = require("http");
+// const https = require("https");
+// const fs = require("fs");
+// const querystring = require("querystring");
 
 const port = 3000;
+dotenv.config();
 
-const { api_key, cat_api_key } = require("./auth/credentials.json");
+const api_key = process.env.API_KEY;
+const cat_api_key = process.env.CAT_API_KEY;
+// const { api_key, cat_api_key } = require("./auth/credentials.json");
 
 const server = http.createServer();
 
