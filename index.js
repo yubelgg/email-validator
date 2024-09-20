@@ -1,15 +1,11 @@
-import dotenv from "dotenv";
-import http from "http";
-import https from "https";
-import fs from "fs";
-import querystring from "querystring";
-// const http = require("http");
-// const https = require("https");
-// const fs = require("fs");
-// const querystring = require("querystring");
+// require("dotenv").config();
+const dotenv = require("dotenv");
+const http = require("http");
+const https = require("https");
+const fs = require("fs");
+const querystring = require("querystring");
 
 const port = 3000;
-dotenv.config();
 
 const api_key = process.env.API_KEY;
 const cat_api_key = process.env.CAT_API_KEY;
@@ -39,7 +35,7 @@ function req_handler(req, res) {
       return;
     }
     validator_api(email_input, res);
-  } else if (req.url.startsWith("./images")) {
+  } else if (req.url.startsWith("/images")) {
     const image_readstream = fs.createReadStream(`.${req.url}`);
     image_readstream.on("error", () => {
       bad_request(res);
@@ -126,7 +122,7 @@ function parse_cat(body, result, res) {
   let split_string = photo_url.split("/");
   let file_name = split_string[split_string.length - 1];
   console.log(file_name);
-  let img_path = `./js/images/${file_name}`;
+  let img_path = `images/${file_name}`;
   // caching
   fs.access(img_path, fs.constants.F_OK, (err) => {
     if (err) {
