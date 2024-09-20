@@ -5,3 +5,7 @@ Controlling API sequence, understanding networking, and sequence diagram
 ### diagram
 
 ![sequence-diagram](./asset/sequence-diagram.png)
+
+### Example
+
+![example](./asset/example.png)
